@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('4097436.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+  font-family: 'Great Vibes', cursive;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  color: #F2884B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card {
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+  padding: 40px;
+  background: #F2DBAE;
+  border-radius: 25px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  overflow: hidden;
+  z-index: 1;
+  transition: height 0.5s ease;
+}
+
+.card h1 {
+  margin-top: 0;
+  font-size: 2em;
+  color: #91B2DD;
+}
+
+.card p {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+
+.star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1; /* Estrelas ficam no fundo */
+  }
+  
+  .star {
+    position: absolute;
+    width: 6px; /* Aumentando o tamanho das estrelas */
+    height: 6px; /* Aumentando o tamanho das estrelas */
+    background: white;
+    border-radius: 50%;
+    opacity: 0.9; /* Aumentando a opacidade das estrelas */
+    box-shadow: 0 0 10px white, 0 0 15px white, 0 0 25px white; /* Aumentando o brilho */
+    animation: star-rise 5s linear infinite, star-blink 1.5s ease-in-out infinite;
+  }
+  
+  .star:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .star:nth-child(2) { left: 25%; animation-delay: 1s; }
+  .star:nth-child(3) { left: 40%; animation-delay: 2s; }
+  .star:nth-child(4) { left: 55%; animation-delay: 0.5s; }
+  .star:nth-child(5) { left: 70%; animation-delay: 1.5s; }
+  .star:nth-child(6) { left: 85%; animation-delay: 2.5s; }
+  .star:nth-child(7) { left: 15%; animation-delay: 3s; }
+  .star:nth-child(8) { left: 35%; animation-delay: 1.8s; }
+  .star:nth-child(9) { left: 60%; animation-delay: 0.8s; }
+  .star:nth-child(10) { left: 90%; animation-delay: 2.2s; }
+  .star:nth-child(11) { left: 5%; animation-delay: 1.2s; }
+  .star:nth-child(12) { left: 20%; animation-delay: 0.3s; }
+  .star:nth-child(13) { left: 45%; animation-delay: 1.7s; }
+  
+  @keyframes star-rise {
+    0% {
+      bottom: -10px;
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      bottom: 110%;
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+@keyframes star-blink {
+  0%, 100% {
+    opacity: 0.9; /* Aumentando a opacidade */
+    box-shadow: 0 0 10px white, 0 0 15px white, 0 0 25px white; /* Intensificando o brilho */
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white; /* Mais brilho no meio da animação */
+  }
+}
+
+.audio-box {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.audio-message {
+  color: white;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 1px 1px 3px black;
+}
+
+.audio-box audio {
+  filter: drop-shadow(0 0 4px black);
+  width: 300px;
+  max-width: 80%;
+}
+
+.mensagens {
+  position: relative;
+  height: auto;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mensagem {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    display: none; /* Adiciona essa linha */
+  }
+  
+  .mensagem.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    display: block; /* Garante que a mensagem ativa aparece */
+  }
+
+
+#nextMessageBtn {
+    background-color: #91B2DD;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#nextMessageBtn:hover {
+    background-color: #6a8cbf;
+}
+
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.mensagem.final {
+    animation: pulseGlow 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+    }
+    50% {
+      text-shadow: 0 0 20px #FF8C00, 0 0 30px #FF4500;
+    }
+  }
